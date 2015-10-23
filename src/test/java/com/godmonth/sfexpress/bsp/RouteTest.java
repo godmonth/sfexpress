@@ -2,8 +2,6 @@ package com.godmonth.sfexpress.bsp;
 
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 import com.godmonth.sfexpress.bsp.protocol.route.RouteRequest;
@@ -14,13 +12,9 @@ import com.godmonth.sfexpress.bsp.protocol.route.TrackingType;
 
 public class RouteTest extends BaseHttpWrapperTest {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(RouteTest.class);
-
 	@Test
 	public void route() throws IOException {
-		RouteResponse routeResponse = baseHttpWrapper.post(createRouteRequest(),
-				RouteResponse.class);
+		RouteResponse routeResponse = baseHttpWrapper.post(createRouteRequest(), RouteResponse.class);
 		System.out.println(routeResponse);
 	}
 
