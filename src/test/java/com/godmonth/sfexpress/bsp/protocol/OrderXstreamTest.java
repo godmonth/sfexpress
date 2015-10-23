@@ -8,7 +8,6 @@ import java.util.UUID;
 
 import org.testng.annotations.Test;
 
-import com.godmonth.sfexpress.bsp.protocol.ResponseError;
 import com.godmonth.sfexpress.bsp.protocol.order.AddedService;
 import com.godmonth.sfexpress.bsp.protocol.order.Cargo;
 import com.godmonth.sfexpress.bsp.protocol.order.OrderRequest;
@@ -107,7 +106,7 @@ public class OrderXstreamTest {
 	@Test
 	public void testAnnotation() {
 		Class c = OrderResponse.class;
-		XStreamAlias annotation = (XStreamAlias) c.getDeclaredAnnotation(XStreamAlias.class);
+		XStreamAlias annotation = (XStreamAlias) c.getAnnotation(XStreamAlias.class);
 		System.out.println(annotation);
 	}
 }
