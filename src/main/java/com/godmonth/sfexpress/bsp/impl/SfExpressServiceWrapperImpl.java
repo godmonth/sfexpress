@@ -74,7 +74,7 @@ public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressS
 		if (responseClass.equals(String.class)) {
 			return (T) response;
 		}
-		XStreamAlias annotation = responseClass.getDeclaredAnnotation(XStreamAlias.class);
+		XStreamAlias annotation = responseClass.getAnnotation(XStreamAlias.class);
 		Validate.notNull(annotation);
 		String tag = annotation.value();
 		xStream.alias(tag, responseClass);
