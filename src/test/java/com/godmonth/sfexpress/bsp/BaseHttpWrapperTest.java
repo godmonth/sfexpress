@@ -7,9 +7,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.testng.annotations.BeforeClass;
 
+import com.godmonth.sfexpress.bsp.impl.DummySslContext;
 import com.godmonth.sfexpress.bsp.impl.SfExpressServiceWrapperImpl;
-
-import cn.com.xiaobenzhu.commons.httpclient.DummySslContext;
 
 public class BaseHttpWrapperTest {
 	protected SfExpressServiceWrapperImpl baseHttpWrapper;
