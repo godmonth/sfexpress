@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @XStreamAlias("Body")
 public class OrderRequestBody {
 	
-	@XStreamAlias("Order")
+	@XStreamAlias("Body")
 	private OrderRequestContent order;
 
 	public OrderRequestBody() {
@@ -29,7 +29,8 @@ public class OrderRequestBody {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("order", this.order).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
+				.append("order", this.order).toString();
 	}
 
 }

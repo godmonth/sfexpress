@@ -26,8 +26,10 @@ import com.thoughtworks.xstream.converters.basic.DateConverter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 
-public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressServiceWrapper {
-	private static final Logger logger = LoggerFactory.getLogger(SfExpressServiceWrapperImpl.class);
+public class SfExpressServiceWrapperImpl
+		implements InitializingBean, SfExpressServiceWrapper {
+	private static final Logger logger = LoggerFactory
+			.getLogger(SfExpressServiceWrapperImpl.class);
 
 	protected String secretKey;
 
@@ -39,14 +41,17 @@ public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressS
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		xStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+		xStream = new XStream(
+				new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		xStream.autodetectAnnotations(true);
 		xStream.ignoreUnknownElements();
-		xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss", new String[0], TimeZone.getDefault()));
+		xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss",
+				new String[0], TimeZone.getDefault()));
 
 		HttpComponentsClientHttpRequestFactory requestFactory = null;
 		if (httpClient != null) {
-			requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+			requestFactory = new HttpComponentsClientHttpRequestFactory(
+					httpClient);
 		} else {
 			requestFactory = new HttpComponentsClientHttpRequestFactory();
 		}
@@ -65,7 +70,7 @@ public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressS
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_FORM_URLENCODED));
 		headers.setAcceptCharset(Arrays.asList(StandardCharsets.UTF_8));
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("xml", requestXml);
 		params.add("verifyCode", md5hex(requestXml, secretKey));
 		String response = restTemplate.postForObject(url, params, String.class);
@@ -74,7 +79,8 @@ public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressS
 		if (responseClass.equals(String.class)) {
 			return (T) response;
 		}
-		XStreamAlias annotation = responseClass.getAnnotation(XStreamAlias.class);
+		XStreamAlias annotation = responseClass
+				.getDeclaredAnnotation(XStreamAlias.class);
 		Validate.notNull(annotation);
 		String tag = annotation.value();
 		xStream.alias(tag, responseClass);

@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.testng.annotations.Test;
 
+import com.godmonth.sfexpress.bsp.protocol.ResponseError;
 import com.godmonth.sfexpress.bsp.protocol.order.AddedService;
 import com.godmonth.sfexpress.bsp.protocol.order.Cargo;
 import com.godmonth.sfexpress.bsp.protocol.order.OrderRequest;
@@ -32,7 +33,7 @@ public class OrderXstreamTest {
 		cargo.setName("ccc");
 		order.setCargo(Collections.singletonList(cargo));
 
-		List<AddedService> addedServices = new ArrayList<AddedService>();
+		List<AddedService> addedServices = new ArrayList<>();
 		{
 			AddedService addedService = new AddedService();
 			addedService.setName("dfff");
@@ -46,9 +47,11 @@ public class OrderXstreamTest {
 
 		order.setAddedService(addedServices);
 
-		OrderRequest request = new OrderRequest("head", new OrderRequestBody(order));
+		OrderRequest request = new OrderRequest("head",
+				new OrderRequestBody(order));
 
-		XStream requestXStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+		XStream requestXStream = new XStream(
+				new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		requestXStream.autodetectAnnotations(true);
 		requestXStream.ignoreUnknownElements();
 		// requestXStream.alias("xml", request.getClass());
@@ -66,9 +69,11 @@ public class OrderXstreamTest {
 		content.setOrigincode("wow");
 		content.setMailno("mmmm");
 
-		OrderResponse response = new OrderResponse("ssss", "hea", new OrderResponseBody(content));
+		OrderResponse response = new OrderResponse("ssss", "hea",
+				new OrderResponseBody(content));
 
-		XStream requestXStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+		XStream requestXStream = new XStream(
+				new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		requestXStream.autodetectAnnotations(true);
 		requestXStream.ignoreUnknownElements();
 		// requestXStream.alias("xml", request.getClass());
@@ -84,7 +89,8 @@ public class OrderXstreamTest {
 
 		OrderResponse response = new OrderResponse("ssss", "hea", error);
 
-		XStream requestXStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+		XStream requestXStream = new XStream(
+				new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		requestXStream.autodetectAnnotations(true);
 		requestXStream.ignoreUnknownElements();
 		// requestXStream.alias("xml", request.getClass());
@@ -95,18 +101,21 @@ public class OrderXstreamTest {
 	@Test
 	public void deserialResponse() {
 
-		XStream requestXStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+		XStream requestXStream = new XStream(
+				new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		requestXStream.autodetectAnnotations(true);
 		requestXStream.ignoreUnknownElements();
 		requestXStream.alias("Response", OrderResponse.class);
-		OrderResponse fromXML = (OrderResponse) requestXStream.fromXML(new File("src/test/resources/aaa.xml"));
+		OrderResponse fromXML = (OrderResponse) requestXStream
+				.fromXML(new File("src/test/resources/aaa.xml"));
 		System.out.println(fromXML);
 	}
 
 	@Test
 	public void testAnnotation() {
 		Class c = OrderResponse.class;
-		XStreamAlias annotation = (XStreamAlias) c.getAnnotation(XStreamAlias.class);
+		XStreamAlias annotation = (XStreamAlias) c
+				.getDeclaredAnnotation(XStreamAlias.class);
 		System.out.println(annotation);
 	}
 }
