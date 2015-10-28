@@ -15,12 +15,12 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.godmonth.sfexpress.bsp.SfExpressServiceWrapper;
+import com.godmonth.sfexpress.bsp.SfExpressClient;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
-public class SfExpressServiceWrapperImpl implements SfExpressServiceWrapper {
-	private static final Logger logger = LoggerFactory.getLogger(SfExpressServiceWrapperImpl.class);
+public class SfExpressClientImpl implements SfExpressClient {
+	private static final Logger logger = LoggerFactory.getLogger(SfExpressClientImpl.class);
 
 	protected String secretKey;
 

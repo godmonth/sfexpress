@@ -11,10 +11,10 @@ import com.godmonth.sfexpress.bsp.protocol.deliverytm.DeliverTmRequestBody;
 import com.godmonth.sfexpress.bsp.protocol.deliverytm.DeliverTmRequestContent;
 import com.godmonth.sfexpress.bsp.protocol.deliverytm.DeliverTmResponse;
 
-public class DeliverTmTest extends BaseHttpWrapperTest {
+public class DeliverTmTest extends SfExpressClientTest {
 	@Test
 	public void deliverTm() throws IOException {
-		DeliverTmResponse orderResponse = baseHttpWrapper.post(createRequest(),
+		DeliverTmResponse orderResponse = sfExpressClient.post(createRequest(),
 				DeliverTmResponse.class);
 		System.out.println(orderResponse);
 	}

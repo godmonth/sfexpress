@@ -16,14 +16,14 @@ import com.godmonth.sfexpress.bsp.protocol.order.OrderRequestBody;
 import com.godmonth.sfexpress.bsp.protocol.order.OrderRequestContent;
 import com.godmonth.sfexpress.bsp.protocol.order.OrderResponse;
 
-public class OrderTest extends BaseHttpWrapperTest {
+public class OrderTest extends SfExpressClientTest {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(OrderTest.class);
 
 	@Test
 	public void order() throws IOException {
-		OrderResponse orderResponse = baseHttpWrapper.post(createOrderRequest(),
+		OrderResponse orderResponse = sfExpressClient.post(createOrderRequest(),
 				OrderResponse.class);
 		System.out.println(orderResponse);
 		logger.trace("orderid:{}",

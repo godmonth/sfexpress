@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-import com.godmonth.sfexpress.bsp.SfExpressServiceWrapper;
+import com.godmonth.sfexpress.bsp.SfExpressClient;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.basic.DateConverter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 
-public class SfExpressServiceWrapperFactory implements InitializingBean {
-	private static final Logger logger = LoggerFactory.getLogger(SfExpressServiceWrapperFactory.class);
+public class SfExpressClientFactory implements InitializingBean {
+	private static final Logger logger = LoggerFactory.getLogger(SfExpressClientFactory.class);
 
 	private String secretKey;
 
@@ -48,8 +48,8 @@ public class SfExpressServiceWrapperFactory implements InitializingBean {
 
 	}
 
-	public SfExpressServiceWrapper build() {
-		SfExpressServiceWrapperImpl expressServiceWrapper = new SfExpressServiceWrapperImpl();
+	public SfExpressClient build() {
+		SfExpressClientImpl expressServiceWrapper = new SfExpressClientImpl();
 		expressServiceWrapper.setRestTemplate(restTemplate);
 		expressServiceWrapper.setSecretKey(secretKey);
 		expressServiceWrapper.setxStream(xStream);

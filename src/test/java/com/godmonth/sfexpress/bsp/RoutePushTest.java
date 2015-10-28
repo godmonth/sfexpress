@@ -14,7 +14,7 @@ import com.thoughtworks.xstream.converters.basic.DateConverter;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 
-public class RoutePushTest extends BaseHttpWrapperTest {
+public class RoutePushTest extends SfExpressClientTest {
 	private XStream xStream;
 
 	@BeforeClass

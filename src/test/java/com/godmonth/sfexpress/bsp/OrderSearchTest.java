@@ -11,11 +11,11 @@ import com.godmonth.sfexpress.bsp.protocol.ordersearch.OrderSearchBody;
 import com.godmonth.sfexpress.bsp.protocol.ordersearch.OrderSearchRequest;
 import com.godmonth.sfexpress.bsp.protocol.ordersearch.OrderSearchResponse;
 
-public class OrderSearchTest extends BaseHttpWrapperTest {
+public class OrderSearchTest extends SfExpressClientTest {
 
 	@Test
 	public void orderSearch() throws IOException {
-		OrderSearchResponse orderResponse = baseHttpWrapper
+		OrderSearchResponse orderResponse = sfExpressClient
 				.post(createRequest(), OrderSearchResponse.class);
 		System.out.println(orderResponse);
 	}

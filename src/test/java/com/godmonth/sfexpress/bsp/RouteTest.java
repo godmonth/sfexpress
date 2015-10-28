@@ -12,15 +12,13 @@ import com.godmonth.sfexpress.bsp.protocol.route.RouteRequestContent;
 import com.godmonth.sfexpress.bsp.protocol.route.RouteResponse;
 import com.godmonth.sfexpress.bsp.protocol.route.TrackingType;
 
-public class RouteTest extends BaseHttpWrapperTest {
+public class RouteTest extends SfExpressClientTest {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(RouteTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(RouteTest.class);
 
 	@Test
 	public void route() throws IOException {
-		RouteResponse routeResponse = baseHttpWrapper.post(createRouteRequest(),
-				RouteResponse.class);
+		RouteResponse routeResponse = sfExpressClient.post(createRouteRequest(), RouteResponse.class);
 		System.out.println(routeResponse);
 	}
 
