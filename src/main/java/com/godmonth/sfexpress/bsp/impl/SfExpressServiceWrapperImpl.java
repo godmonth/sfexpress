@@ -2,19 +2,15 @@ package com.godmonth.sfexpress.bsp.impl;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.TimeZone;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.Validate;
-import org.apache.http.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -22,36 +18,17 @@ import org.springframework.web.client.RestTemplate;
 import com.godmonth.sfexpress.bsp.SfExpressServiceWrapper;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.converters.basic.DateConverter;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 
-public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressServiceWrapper {
+public class SfExpressServiceWrapperImpl implements SfExpressServiceWrapper {
 	private static final Logger logger = LoggerFactory.getLogger(SfExpressServiceWrapperImpl.class);
 
 	protected String secretKey;
 
-	protected HttpClient httpClient;
-
 	protected RestTemplate restTemplate;
+
 	private String url;
+
 	private XStream xStream;
-
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		xStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
-		xStream.autodetectAnnotations(true);
-		xStream.ignoreUnknownElements();
-		xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss", new String[0], TimeZone.getDefault()));
-
-		HttpComponentsClientHttpRequestFactory requestFactory = null;
-		if (httpClient != null) {
-			requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-		} else {
-			requestFactory = new HttpComponentsClientHttpRequestFactory();
-		}
-		restTemplate = new RestTemplate(requestFactory);
-	}
 
 	private static String md5hex(String xml, String secretKey) {
 		String content = xml + secretKey;
@@ -87,13 +64,18 @@ public class SfExpressServiceWrapperImpl implements InitializingBean, SfExpressS
 	}
 
 	@Required
-	public void setHttpClient(HttpClient httpClient) {
-		this.httpClient = httpClient;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Required
-	public void setUrl(String url) {
-		this.url = url;
+	public void setRestTemplate(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+
+	@Required
+	public void setxStream(XStream xStream) {
+		this.xStream = xStream;
 	}
 
 }
