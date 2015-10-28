@@ -16,6 +16,14 @@ Add snapshot repository in your settings.xml if you need snapshot version.
 
 &lt;repository&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;id&gt;ossrh&lt;/id&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;url&gt;https://oss.sonatype.org/content/repositories/snapshots&lt;/url&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;releases&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;enabled&gt;false&lt;/enabled&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/releases&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;snapshots&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;enabled&gt;true&lt;/enabled&gt;<br/>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/snapshots&gt;<br/>&lt;/repository&gt;
 
+quick start
 
+see test case 
+
+com.godmonth.sfexpress.bsp.SfExpressClientTest
+
+if you need spring context bean definition,
+
+see src/test/resources/context-bsp.xml
 
 
