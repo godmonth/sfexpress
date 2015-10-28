@@ -20,7 +20,7 @@ quick start
 
 see test case 
 
-com.godmonth.sfexpress.bsp.SfExpressClientTest
+com.godmonth.sfexpress.bsp.*Test under src/test/java folder.
 
 if you need spring context bean definition,
 
