@@ -64,6 +64,7 @@ public class OrderRequestContent {
 	@XStreamAlias("j_mobile")
 	@XStreamAsAttribute
 	private String jMobile;
+	
 	/**
 	 * 寄件方国家/城市代码
 	 */
