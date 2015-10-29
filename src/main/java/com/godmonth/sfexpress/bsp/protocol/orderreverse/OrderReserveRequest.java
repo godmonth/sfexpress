@@ -7,7 +7,7 @@ import com.godmonth.sfexpress.bsp.protocol.Request;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("Request")
-public class OrderReverseRequest extends Request {
+public class OrderReserveRequest extends Request {
 
 	@XStreamAlias("Body")
 	private OrderReserveRequestBody body;
@@ -16,10 +16,10 @@ public class OrderReverseRequest extends Request {
 		setService("OrderReverseService");
 	}
 
-	public OrderReverseRequest() {
+	public OrderReserveRequest() {
 	}
 
-	public OrderReverseRequest(String head, OrderReserveRequestBody body) {
+	public OrderReserveRequest(String head, OrderReserveRequestBody body) {
 		setHead(head);
 		this.body = body;
 	}

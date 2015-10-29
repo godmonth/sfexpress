@@ -56,7 +56,7 @@ public class OrderReserveRequestContent {
 	/**
 	 * 原订单号
 	 */
-	@XStreamAlias("orig_orderid")
+	@XStreamAlias("j_contact")
 	@XStreamAsAttribute
 	private String jContact;
 
