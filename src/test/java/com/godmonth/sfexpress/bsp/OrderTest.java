@@ -18,22 +18,16 @@ import com.godmonth.sfexpress.bsp.protocol.order.OrderResponse;
 
 public class OrderTest extends SfExpressClientTest {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(OrderTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(OrderTest.class);
 
 	@Test
 	public void order() throws IOException {
-		OrderResponse orderResponse = sfExpressClient.post(createOrderRequest(),
-				OrderResponse.class);
+		OrderResponse orderResponse = sfExpressClient.post(createOrderRequest(), OrderResponse.class);
 		System.out.println(orderResponse);
-		logger.trace("orderid:{}",
-				orderResponse.getBody().getOrderResponse().getOrderid());
-		logger.trace("mailno:{}",
-				orderResponse.getBody().getOrderResponse().getMailno());
-		FileUtils.write(new File("target/orderid.txt"),
-				orderResponse.getBody().getOrderResponse().getOrderid());
-		FileUtils.write(new File("target/mailno.txt"),
-				orderResponse.getBody().getOrderResponse().getMailno());
+		logger.trace("orderid:{}", orderResponse.getBody().getOrderResponse().getOrderid());
+		logger.trace("mailno:{}", orderResponse.getBody().getOrderResponse().getMailno());
+		FileUtils.write(new File("target/orderid.txt"), orderResponse.getBody().getOrderResponse().getOrderid());
+		FileUtils.write(new File("target/mailno.txt"), orderResponse.getBody().getOrderResponse().getMailno());
 	}
 
 	private OrderRequest createOrderRequest() {
@@ -66,8 +60,7 @@ public class OrderTest extends SfExpressClientTest {
 
 		// order.setAddedService(addedServices);
 
-		OrderRequest request = new OrderRequest("BSPdevelop",
-				new OrderRequestBody(order));
+		OrderRequest request = new OrderRequest(new OrderRequestBody(order));
 
 		return request;
 	}

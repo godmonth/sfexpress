@@ -19,8 +19,7 @@ public class RoutePushRequest extends Request {
 	public RoutePushRequest() {
 	}
 
-	public RoutePushRequest(String head, WaybillRoute[] body) {
-		setHead(head);
+	public RoutePushRequest(WaybillRoute[] body) {
 		this.body = body;
 	}
 
@@ -36,8 +35,7 @@ public class RoutePushRequest extends Request {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("body", this.body).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("body", this.body).toString();
 	}
 
 }

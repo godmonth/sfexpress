@@ -27,6 +27,6 @@ public class RouteTest extends SfExpressClientTest {
 		route.setTrackingType(TrackingType.ORDERID);
 		route.setTrackingNumber("201508211846");
 		route.setMethodType(1);
-		return new RouteRequest("BSPdevelop", new RouteRequestBody(route));
+		return new RouteRequest(new RouteRequestBody(route));
 	}
 }

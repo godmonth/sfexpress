@@ -19,19 +19,16 @@ public class RoutePushTest extends SfExpressClientTest {
 
 	@BeforeClass
 	public void prepare() {
-		xStream = new XStream(
-				new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+		xStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		xStream.autodetectAnnotations(true);
 		xStream.ignoreUnknownElements();
-		xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss",
-				new String[0], TimeZone.getDefault()));
+		xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss", new String[0], TimeZone.getDefault()));
 	}
 
 	@Test
 	public void route() throws IOException {
-		RoutePushRequest pushRequest = new RoutePushRequest("BSPdevelop",
-				new WaybillRoute[] { createWaybillRoute(),
-						createWaybillRoute() });
+		RoutePushRequest pushRequest = new RoutePushRequest(
+				new WaybillRoute[] { createWaybillRoute(), createWaybillRoute() });
 		pushRequest.setService("cccaaa");
 		pushRequest.setLang("dsaa");
 		System.out.println(xStream.toXML(pushRequest));

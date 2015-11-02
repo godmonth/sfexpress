@@ -14,8 +14,7 @@ import com.godmonth.sfexpress.bsp.protocol.deliverytm.DeliverTmResponse;
 public class DeliverTmTest extends SfExpressClientTest {
 	@Test
 	public void deliverTm() throws IOException {
-		DeliverTmResponse orderResponse = sfExpressClient.post(createRequest(),
-				DeliverTmResponse.class);
+		DeliverTmResponse orderResponse = sfExpressClient.post(createRequest(), DeliverTmResponse.class);
 		System.out.println(orderResponse);
 	}
 
@@ -38,8 +37,7 @@ public class DeliverTmTest extends SfExpressClientTest {
 		destAddress.setAddress("上海市蓝村路xxx弄xx号xxx室");
 		requestContent.setDestAddress(destAddress);
 
-		DeliverTmRequest deliverTmRequest = new DeliverTmRequest("BSPdevelop",
-				new DeliverTmRequestBody(requestContent));
+		DeliverTmRequest deliverTmRequest = new DeliverTmRequest(new DeliverTmRequestBody(requestContent));
 		return deliverTmRequest;
 	}
 }

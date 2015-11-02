@@ -19,8 +19,7 @@ public class OrderReserveRequest extends Request {
 	public OrderReserveRequest() {
 	}
 
-	public OrderReserveRequest(String head, OrderReserveRequestBody body) {
-		setHead(head);
+	public OrderReserveRequest(OrderReserveRequestBody body) {
 		this.body = body;
 	}
 

@@ -19,8 +19,7 @@ public class DeliverTmRequest extends Request {
 	public DeliverTmRequest() {
 	}
 
-	public DeliverTmRequest(String head, DeliverTmRequestBody body) {
-		setHead(head);
+	public DeliverTmRequest(DeliverTmRequestBody body) {
 		this.body = body;
 	}
 
@@ -36,9 +35,8 @@ public class DeliverTmRequest extends Request {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.appendSuper(super.toString()).append("body", this.body)
-				.toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).appendSuper(super.toString())
+				.append("body", this.body).toString();
 	}
 
 }

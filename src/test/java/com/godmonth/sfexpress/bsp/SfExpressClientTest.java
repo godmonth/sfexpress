@@ -15,8 +15,10 @@ public class SfExpressClientTest {
 		SfExpressClientFactory sfExpressServiceWrapperFactory = new SfExpressClientFactory();
 		sfExpressServiceWrapperFactory.setHttpClient(closeableHttpClient);
 		sfExpressServiceWrapperFactory.setSecretKey("j8DzkIFgmlomPt0aLuwU");
+		sfExpressServiceWrapperFactory.setHead("BSPdevelop");
 		// sfExpressServiceWrapperFactory.setUrl("https://bsp-oisp.test.sf-express.com/bsp-oisp/sfexpressService");
 		sfExpressServiceWrapperFactory.setUrl("http://218.17.248.244:11080/bsp-oisp/sfexpressService");
+		// sfExpressServiceWrapperFactory.setUrl("http://218.17.248.244:11080/bsp-oisp/ws/sfexpressService");
 		sfExpressServiceWrapperFactory.afterPropertiesSet();
 		sfExpressClient = sfExpressServiceWrapperFactory.build();
 	}

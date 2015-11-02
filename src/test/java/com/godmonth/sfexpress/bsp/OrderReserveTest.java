@@ -3,7 +3,6 @@ package com.godmonth.sfexpress.bsp;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -59,7 +58,7 @@ public class OrderReserveTest extends SfExpressClientTest {
 
 		// order.setAddedService(addedServices);
 
-		OrderReserveRequest request = new OrderReserveRequest("BSPdevelop", new OrderReserveRequestBody(order));
+		OrderReserveRequest request = new OrderReserveRequest(new OrderReserveRequestBody(order));
 
 		return request;
 	}

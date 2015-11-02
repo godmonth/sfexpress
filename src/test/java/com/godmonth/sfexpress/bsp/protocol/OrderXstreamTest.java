@@ -8,7 +8,6 @@ import java.util.UUID;
 
 import org.testng.annotations.Test;
 
-import com.godmonth.sfexpress.bsp.protocol.ResponseError;
 import com.godmonth.sfexpress.bsp.protocol.order.AddedService;
 import com.godmonth.sfexpress.bsp.protocol.order.Cargo;
 import com.godmonth.sfexpress.bsp.protocol.order.OrderRequest;
@@ -47,7 +46,7 @@ public class OrderXstreamTest {
 
 		order.setAddedService(addedServices);
 
-		OrderRequest request = new OrderRequest("head", new OrderRequestBody(order));
+		OrderRequest request = new OrderRequest(new OrderRequestBody(order));
 
 		XStream requestXStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
 		requestXStream.autodetectAnnotations(true);

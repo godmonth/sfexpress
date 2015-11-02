@@ -19,8 +19,7 @@ public class OrderSearchRequest extends Request {
 	public OrderSearchRequest() {
 	}
 
-	public OrderSearchRequest(String head, OrderSearchBody body) {
-		setHead(head);
+	public OrderSearchRequest(OrderSearchBody body) {
 		this.body = body;
 	}
 
@@ -36,9 +35,8 @@ public class OrderSearchRequest extends Request {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.appendSuper(super.toString()).append("body", this.body)
-				.toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).appendSuper(super.toString())
+				.append("body", this.body).toString();
 	}
 
 }

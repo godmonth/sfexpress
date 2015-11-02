@@ -8,7 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("Request")
 public class OrderRequest extends Request {
-	
+
 	@XStreamAlias("Body")
 	private OrderRequestBody body;
 
@@ -19,8 +19,7 @@ public class OrderRequest extends Request {
 	public OrderRequest() {
 	}
 
-	public OrderRequest(String head, OrderRequestBody body) {
-		setHead(head);
+	public OrderRequest(OrderRequestBody body) {
 		this.body = body;
 	}
 
@@ -36,9 +35,8 @@ public class OrderRequest extends Request {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.appendSuper(super.toString()).append("body", this.body)
-				.toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).appendSuper(super.toString())
+				.append("body", this.body).toString();
 	}
 
 }

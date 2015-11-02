@@ -16,6 +16,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.godmonth.sfexpress.bsp.SfExpressClient;
+import com.godmonth.sfexpress.bsp.protocol.Request;
+import com.godmonth.sfexpress.bsp.protocol.Response;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 
@@ -30,13 +32,16 @@ public class SfExpressClientImpl implements SfExpressClient {
 
 	private XStream xStream;
 
+	private String head;
+
 	private static String md5hex(String xml, String secretKey) {
 		String content = xml + secretKey;
 		return Base64.encodeBase64String(DigestUtils.md5(content));
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T> T post(Object request, Class<T> responseClass) {
+	public <REQ extends Request, RES extends Response> RES post(REQ request, Class<RES> responseClass) {
+		request.setHead(head);
 		String requestXml = xStream.toXML(request);
 		logger.trace("requestXml:{}", requestXml);
 		HttpHeaders headers = new HttpHeaders();
@@ -48,14 +53,11 @@ public class SfExpressClientImpl implements SfExpressClient {
 		String response = restTemplate.postForObject(url, params, String.class);
 		logger.trace("responseXml:{}", response);
 
-		if (responseClass.equals(String.class)) {
-			return (T) response;
-		}
 		XStreamAlias annotation = responseClass.getAnnotation(XStreamAlias.class);
 		Validate.notNull(annotation);
 		String tag = annotation.value();
 		xStream.alias(tag, responseClass);
-		return (T) xStream.fromXML(response);
+		return (RES) xStream.fromXML(response);
 	}
 
 	@Required
@@ -76,6 +78,11 @@ public class SfExpressClientImpl implements SfExpressClient {
 	@Required
 	public void setxStream(XStream xStream) {
 		this.xStream = xStream;
+	}
+
+	@Required
+	public void setHead(String head) {
+		this.head = head;
 	}
 
 }

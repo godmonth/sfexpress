@@ -19,6 +19,8 @@ import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 public class SfExpressClientFactory implements InitializingBean {
 	private static final Logger logger = LoggerFactory.getLogger(SfExpressClientFactory.class);
 
+	private String head;
+
 	private String secretKey;
 
 	private HttpClient httpClient;
@@ -52,9 +54,15 @@ public class SfExpressClientFactory implements InitializingBean {
 		SfExpressClientImpl expressServiceWrapper = new SfExpressClientImpl();
 		expressServiceWrapper.setRestTemplate(restTemplate);
 		expressServiceWrapper.setSecretKey(secretKey);
+		expressServiceWrapper.setHead(head);
 		expressServiceWrapper.setxStream(xStream);
 		expressServiceWrapper.setUrl(url);
 		return expressServiceWrapper;
+	}
+
+	@Required
+	public void setHead(String head) {
+		this.head = head;
 	}
 
 	@Required
