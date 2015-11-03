@@ -8,13 +8,12 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<bean id="sfExpressServiceWrapperFactory"
-		class="com.godmonth.sfexpress.bsp.impl.SfExpressClientFactory"
+	<bean id="sfExpressClientFactory" class="com.godmonth.sfexpress.bsp.impl.SfExpressClientFactory"
 		p:url="${sfexress.bsp.url}" p:secretKey="${sfexress.bsp.secret}">
 		<property name="httpClient">
 			<bean class="com.godmonth.sfexpress.bsp.impl.CustomHttpClientBuilder" />
 		</property>
 	</bean>
-	<bean id="sfExpressServiceWrapper" factory-bean="sfExpressServiceWrapperFactory"
+	<bean id="sfExpressClient" factory-bean="sfExpressClientFactory"
 		factory-method="build" />
 </beans>
