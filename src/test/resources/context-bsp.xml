@@ -11,9 +11,11 @@
 	<bean id="sfExpressClientFactory" class="com.godmonth.sfexpress.bsp.impl.SfExpressClientFactory"
 		p:url="${sfexress.bsp.url}" p:head="${sfexress.bsp.head}" p:secretKey="${sfexress.bsp.secret}">
 		<property name="httpClient">
-			<bean class="com.godmonth.sfexpress.bsp.impl.CustomHttpClientBuilder" />
+			<bean factory-bean="customHttpClientBuilder" factory-method="build" />
 		</property>
 	</bean>
+	<bean id="customHttpClientBuilder" class="com.godmonth.sfexpress.bsp.impl.CustomHttpClientBuilder" />
+
 	<bean id="sfExpressClient" factory-bean="sfExpressClientFactory"
 		factory-method="build" />
 </beans>
