@@ -34,7 +34,8 @@ public class OrderTest extends SfExpressClientTest {
 
 	private OrderRequest createOrderRequest() {
 		OrderRequestContent order = new OrderRequestContent();
-		order.setOrderid(UUID.randomUUID().toString());
+//		order.setOrderid(UUID.randomUUID().toString());
+		order.setOrderid("cbf70f0c-f177-4c80-9d72-e469258ae036");
 		order.setIsGenBillNo(1);
 		order.setjContact("王先生");
 		order.setjMobile("13812341234");
