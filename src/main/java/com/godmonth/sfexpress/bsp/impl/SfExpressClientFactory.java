@@ -33,11 +33,12 @@ public class SfExpressClientFactory implements InitializingBean {
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		xStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
-		xStream.autodetectAnnotations(true);
-		xStream.ignoreUnknownElements();
-		xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss", new String[0], TimeZone.getDefault()));
-
+		if (xStream == null) {
+			xStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
+			xStream.autodetectAnnotations(true);
+			xStream.ignoreUnknownElements();
+			xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss", new String[0], TimeZone.getDefault()));
+		}
 		if (restTemplate == null) {
 			HttpComponentsClientHttpRequestFactory requestFactory = null;
 			if (httpClient != null) {
@@ -83,7 +84,6 @@ public class SfExpressClientFactory implements InitializingBean {
 		this.url = url;
 	}
 
-	@Required
 	public void setxStream(XStream xStream) {
 		this.xStream = xStream;
 	}
