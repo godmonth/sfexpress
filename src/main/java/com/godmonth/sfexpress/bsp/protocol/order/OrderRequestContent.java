@@ -9,6 +9,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * 下订单（含筛选）
@@ -18,6 +19,14 @@ import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
  */
 @XStreamAlias("Order")
 public class OrderRequestContent {
+
+	/**
+	 * 货物
+	 */
+	@XStreamAlias("Cargo")
+	@XStreamImplicit
+	private List<Cargo> cargo;
+
 	/**
 	 * 客户订单号
 	 */
@@ -64,7 +73,7 @@ public class OrderRequestContent {
 	@XStreamAlias("j_mobile")
 	@XStreamAsAttribute
 	private String jMobile;
-	
+
 	/**
 	 * 寄件方国家/城市代码
 	 */
@@ -425,13 +434,8 @@ public class OrderRequestContent {
 	/**
 	 * 货物
 	 */
-	@XStreamAlias("Cargo")
-	private List<Cargo> cargo;
-
-	/**
-	 * 货物
-	 */
 	@XStreamAlias("AddedService")
+	@XStreamImplicit
 	private List<AddedService> addedService;
 
 	public String getOrderid() {
@@ -906,14 +910,6 @@ public class OrderRequestContent {
 		this.oneselfPickupFlg = oneselfPickupFlg;
 	}
 
-	public List<Cargo> getCargo() {
-		return cargo;
-	}
-
-	public void setCargo(List<Cargo> cargo) {
-		this.cargo = cargo;
-	}
-
 	public List<AddedService> getAddedService() {
 		return addedService;
 	}
@@ -926,63 +922,42 @@ public class OrderRequestContent {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("jCity", this.jCity)
-				.append("oneselfPickupFlg", this.oneselfPickupFlg)
-				.append("dProvince", this.dProvince)
-				.append("specifications", this.specifications)
-				.append("paymentTool", this.paymentTool)
-				.append("payMethod", this.payMethod)
-				.append("dPostCode", this.dPostCode)
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("jCity", this.jCity)
+				.append("oneselfPickupFlg", this.oneselfPickupFlg).append("dProvince", this.dProvince)
+				.append("specifications", this.specifications).append("paymentTool", this.paymentTool)
+				.append("payMethod", this.payMethod).append("dPostCode", this.dPostCode)
 				.append("cargoTotalWeight", this.cargoTotalWeight)
-				.append("declaredValueCurrency", this.declaredValueCurrency)
-				.append("cargo", this.cargo).append("brand", this.brand)
-				.append("declaredValue", this.declaredValue)
-				.append("jAddress", this.jAddress)
-				.append("expressType", this.expressType)
-				.append("jMobile", this.jMobile).append("jCounty", this.jCounty)
-				.append("isGenBillNo", this.isGenBillNo)
-				.append("jShippercode", this.jShippercode)
-				.append("dCompany", this.dCompany)
-				.append("sendstarttime", this.sendstarttime)
-				.append("returnTracking", this.returnTracking)
-				.append("jCompany", this.jCompany)
-				.append("isDocall", this.isDocall).append("mailno", this.mailno)
-				.append("volume", this.volume)
-				.append("inProcessWaybillNo", this.inProcessWaybillNo)
-				.append("dAddress", this.dAddress)
-				.append("dMobile", this.dMobile).append("custid", this.custid)
-				.append("dTel", this.dTel)
-				.append("taxSetAccounts", this.taxSetAccounts)
-				.append("dTaxNo", this.dTaxNo)
-				.append("customsBatchs", this.customsBatchs)
-				.append("paymentNumber", this.paymentNumber)
-				.append("jCountry", this.jCountry)
-				.append("template", this.template)
-				.append("dDeliverycode", this.dDeliverycode)
-				.append("remark", this.remark)
-				.append("cargoWidth", this.cargoWidth)
-				.append("cargoHeight", this.cargoHeight)
-				.append("dCity", this.dCity)
-				.append("addedService", this.addedService)
-				.append("dCountry", this.dCountry)
-				.append("dCounty", this.dCounty)
-				.append("taxPayType", this.taxPayType)
-				.append("cargoLength", this.cargoLength)
-				.append("orderName", this.orderName).append("jTel", this.jTel)
-				.append("parcelQuantity", this.parcelQuantity)
-				.append("originalNumber", this.originalNumber)
-				.append("orderSource", this.orderSource)
-				.append("orderid", this.orderid)
-				.append("orderCertType", this.orderCertType)
-				.append("needReturnTrackingNo", this.needReturnTrackingNo)
-				.append("jProvince", this.jProvince)
-				.append("jPostCode", this.jPostCode)
-				.append("dContact", this.dContact)
-				.append("tempRange", this.tempRange)
-				.append("jContact", this.jContact)
-				.append("goodsCode", this.goodsCode)
-				.append("orderCertNo", this.orderCertNo).toString();
+				.append("declaredValueCurrency", this.declaredValueCurrency).append("cargo", this.cargo)
+				.append("brand", this.brand).append("declaredValue", this.declaredValue)
+				.append("jAddress", this.jAddress).append("expressType", this.expressType)
+				.append("jMobile", this.jMobile).append("jCounty", this.jCounty).append("isGenBillNo", this.isGenBillNo)
+				.append("jShippercode", this.jShippercode).append("dCompany", this.dCompany)
+				.append("sendstarttime", this.sendstarttime).append("returnTracking", this.returnTracking)
+				.append("jCompany", this.jCompany).append("isDocall", this.isDocall).append("mailno", this.mailno)
+				.append("volume", this.volume).append("inProcessWaybillNo", this.inProcessWaybillNo)
+				.append("dAddress", this.dAddress).append("dMobile", this.dMobile).append("custid", this.custid)
+				.append("dTel", this.dTel).append("taxSetAccounts", this.taxSetAccounts).append("dTaxNo", this.dTaxNo)
+				.append("customsBatchs", this.customsBatchs).append("paymentNumber", this.paymentNumber)
+				.append("jCountry", this.jCountry).append("template", this.template)
+				.append("dDeliverycode", this.dDeliverycode).append("remark", this.remark)
+				.append("cargoWidth", this.cargoWidth).append("cargoHeight", this.cargoHeight)
+				.append("dCity", this.dCity).append("addedService", this.addedService).append("dCountry", this.dCountry)
+				.append("dCounty", this.dCounty).append("taxPayType", this.taxPayType)
+				.append("cargoLength", this.cargoLength).append("orderName", this.orderName).append("jTel", this.jTel)
+				.append("parcelQuantity", this.parcelQuantity).append("originalNumber", this.originalNumber)
+				.append("orderSource", this.orderSource).append("orderid", this.orderid)
+				.append("orderCertType", this.orderCertType).append("needReturnTrackingNo", this.needReturnTrackingNo)
+				.append("jProvince", this.jProvince).append("jPostCode", this.jPostCode)
+				.append("dContact", this.dContact).append("tempRange", this.tempRange).append("jContact", this.jContact)
+				.append("goodsCode", this.goodsCode).append("orderCertNo", this.orderCertNo).toString();
+	}
+
+	public List<Cargo> getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(List<Cargo> cargo) {
+		this.cargo = cargo;
 	}
 
 }

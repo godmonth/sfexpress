@@ -2,7 +2,9 @@ package com.godmonth.sfexpress.bsp;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
@@ -44,7 +46,9 @@ public class OrderTest extends SfExpressClientTest {
 
 		Cargo cargo = new Cargo();
 		cargo.setName("你好");
-		order.setCargo(Collections.singletonList(cargo));
+		List<Cargo> l = new ArrayList<Cargo>();
+		l.add(cargo);
+		order.setCargo(Arrays.asList(cargo));
 
 		// List<AddedService> addedServices = new ArrayList<>();
 		// {
