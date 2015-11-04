@@ -10,7 +10,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 public class RoutePushRequest extends Request {
 
 	@XStreamAlias("Body")
-	private WaybillRoute[] body;
+	private RoutePushRequestBody body;
 
 	{
 		setService("RoutePushService");
@@ -19,15 +19,16 @@ public class RoutePushRequest extends Request {
 	public RoutePushRequest() {
 	}
 
-	public RoutePushRequest(WaybillRoute[] body) {
+	public RoutePushRequest(RoutePushRequestBody body) {
+		super();
 		this.body = body;
 	}
 
-	public WaybillRoute[] getBody() {
+	public RoutePushRequestBody getBody() {
 		return body;
 	}
 
-	public void setBody(WaybillRoute[] body) {
+	public void setBody(RoutePushRequestBody body) {
 		this.body = body;
 	}
 
@@ -35,7 +36,9 @@ public class RoutePushRequest extends Request {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("body", this.body).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("lang", this.getLang())
+				.append("body", this.body).append("head", this.getHead()).append("service", this.getService())
+				.toString();
 	}
 
 }

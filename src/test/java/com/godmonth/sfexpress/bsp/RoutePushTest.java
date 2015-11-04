@@ -1,6 +1,7 @@
 package com.godmonth.sfexpress.bsp;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -8,6 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.godmonth.sfexpress.bsp.protocol.route.RoutePushRequest;
+import com.godmonth.sfexpress.bsp.protocol.route.RoutePushRequestBody;
 import com.godmonth.sfexpress.bsp.protocol.route.WaybillRoute;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.basic.DateConverter;
@@ -28,7 +30,7 @@ public class RoutePushTest extends SfExpressClientTest {
 	@Test
 	public void route() throws IOException {
 		RoutePushRequest pushRequest = new RoutePushRequest(
-				new WaybillRoute[] { createWaybillRoute(), createWaybillRoute() });
+				new RoutePushRequestBody(Arrays.asList(createWaybillRoute(), createWaybillRoute())));
 		pushRequest.setService("cccaaa");
 		pushRequest.setLang("dsaa");
 		System.out.println(xStream.toXML(pushRequest));
