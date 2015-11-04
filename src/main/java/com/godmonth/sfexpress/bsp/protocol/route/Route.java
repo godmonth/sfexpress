@@ -1,5 +1,7 @@
 package com.godmonth.sfexpress.bsp.protocol.route;
 
+import java.util.Date;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -14,7 +16,7 @@ public class Route {
 	 */
 	@XStreamAlias("accept_time")
 	@XStreamAsAttribute
-	private String acceptTime;
+	private Date acceptTime;
 
 	/**
 	 * 路由节点发生的地点
@@ -35,11 +37,11 @@ public class Route {
 	@XStreamAsAttribute
 	private String opcode;
 
-	public String getAcceptTime() {
+	public Date getAcceptTime() {
 		return acceptTime;
 	}
 
-	public void setAcceptTime(String acceptTime) {
+	public void setAcceptTime(Date acceptTime) {
 		this.acceptTime = acceptTime;
 	}
 
@@ -71,10 +73,8 @@ public class Route {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("acceptAddress", this.acceptAddress)
-				.append("acceptTime", this.acceptTime)
-				.append("remark", this.remark).append("opcode", this.opcode)
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("acceptAddress", this.acceptAddress)
+				.append("acceptTime", this.acceptTime).append("remark", this.remark).append("opcode", this.opcode)
 				.toString();
 	}
 
