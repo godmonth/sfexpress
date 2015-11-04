@@ -1,7 +1,5 @@
 package com.godmonth.sfexpress.bsp.impl;
 
-import java.util.TimeZone;
-
 import org.apache.http.client.HttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.godmonth.sfexpress.bsp.SfExpressClient;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.converters.basic.DateConverter;
-import com.thoughtworks.xstream.io.xml.DomDriver;
-import com.thoughtworks.xstream.io.xml.XmlFriendlyNameCoder;
 
 public class SfExpressClientFactory implements InitializingBean {
 	private static final Logger logger = LoggerFactory.getLogger(SfExpressClientFactory.class);
@@ -34,10 +29,7 @@ public class SfExpressClientFactory implements InitializingBean {
 	@Override
 	public void afterPropertiesSet() throws Exception {
 		if (xStream == null) {
-			xStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
-			xStream.autodetectAnnotations(true);
-			xStream.ignoreUnknownElements();
-			xStream.registerConverter(new DateConverter("yyyy-MM-dd HH:mm:ss", new String[0], TimeZone.getDefault()));
+			xStream = SimpleXstreamFactory.create();
 		}
 		if (restTemplate == null) {
 			HttpComponentsClientHttpRequestFactory requestFactory = null;
