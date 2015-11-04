@@ -3,12 +3,12 @@ package com.godmonth.sfexpress.bsp.protocol;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
 import org.testng.annotations.Test;
 
+import com.godmonth.sfexpress.bsp.impl.SimpleXstreamFactory;
 import com.godmonth.sfexpress.bsp.protocol.order.AddedService;
 import com.godmonth.sfexpress.bsp.protocol.order.Cargo;
 import com.godmonth.sfexpress.bsp.protocol.order.OrderRequest;
@@ -49,9 +49,7 @@ public class OrderXstreamTest {
 
 		OrderRequest request = new OrderRequest(new OrderRequestBody(order));
 
-		XStream requestXStream = new XStream(new DomDriver("UTF-8", new XmlFriendlyNameCoder("-_", "_")));
-		requestXStream.autodetectAnnotations(true);
-		requestXStream.ignoreUnknownElements();
+		XStream requestXStream = SimpleXstreamFactory.create();
 		// requestXStream.alias("xml", request.getClass());
 		String xml = requestXStream.toXML(request);
 		System.out.println(xml);
