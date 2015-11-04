@@ -1,28 +1,31 @@
 package com.godmonth.sfexpress.bsp.protocol.route;
 
+import java.util.List;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 public class RoutePushRequestBody {
 
 	@XStreamAlias("WaybillRoute")
-	private WaybillRoute[] waybillRoute;
+	@XStreamImplicit
+	private List<WaybillRoute> waybillRoute;
 
 	public RoutePushRequestBody() {
 	}
 
-	public RoutePushRequestBody(WaybillRoute[] waybillRoute) {
-		super();
+	public RoutePushRequestBody(List<WaybillRoute> waybillRoute) {
 		this.waybillRoute = waybillRoute;
 	}
 
-	public WaybillRoute[] getWaybillRoute() {
+	public List<WaybillRoute> getWaybillRoute() {
 		return waybillRoute;
 	}
 
-	public void setWaybillRoute(WaybillRoute[] waybillRoute) {
+	public void setWaybillRoute(List<WaybillRoute> waybillRoute) {
 		this.waybillRoute = waybillRoute;
 	}
 
@@ -30,8 +33,8 @@ public class RoutePushRequestBody {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("waybillRoute", this.waybillRoute).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("waybillRoute", this.waybillRoute)
+				.toString();
 	}
 
 }
