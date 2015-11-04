@@ -56,8 +56,9 @@ public class SfExpressClientImpl implements SfExpressClient {
 		XStreamAlias annotation = responseClass.getAnnotation(XStreamAlias.class);
 		Validate.notNull(annotation);
 		String tag = annotation.value();
-		xStream.alias(tag, responseClass);
-		return (RES) xStream.fromXML(response);
+		XStream responseXstream = SimpleXstreamFactory.create();
+		responseXstream.alias(tag, responseClass);
+		return (RES) responseXstream.fromXML(response);
 	}
 
 	@Required
