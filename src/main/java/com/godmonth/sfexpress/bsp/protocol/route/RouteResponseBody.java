@@ -8,6 +8,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 @XStreamAlias("Body")
 public class RouteResponseBody {
 
+	@XStreamAlias("RouteResponse")
 	private RouteResponseContent routeResponse;
 
 	public RouteResponseContent getRouteResponse() {
@@ -22,8 +23,8 @@ public class RouteResponseBody {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("routeResponse", this.routeResponse).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("routeResponse", this.routeResponse)
+				.toString();
 	}
 
 }

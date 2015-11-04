@@ -8,14 +8,15 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 
 @XStreamAlias("Response")
 public class RouteResponse extends Response {
+	
+	@XStreamAlias("Body")
+	private RouteResponseBody body;
 
-	private RouteRequestBody body;
-
-	public RouteRequestBody getBody() {
+	public RouteResponseBody getBody() {
 		return body;
 	}
 
-	public void setBody(RouteRequestBody body) {
+	public void setBody(RouteResponseBody body) {
 		this.body = body;
 	}
 
@@ -23,8 +24,8 @@ public class RouteResponse extends Response {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.appendSuper(super.toString()).append("body", this.body)
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("error", this.getError())
+				.append("body", this.body).append("head", this.getHead()).append("service", this.getService())
 				.toString();
 	}
 

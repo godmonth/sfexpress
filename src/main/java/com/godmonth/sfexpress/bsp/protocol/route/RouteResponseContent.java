@@ -2,10 +2,12 @@ package com.godmonth.sfexpress.bsp.protocol.route;
 
 import java.util.List;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 @XStreamAlias("RouteResponse")
 public class RouteResponseContent {
@@ -21,6 +23,11 @@ public class RouteResponseContent {
 	@XStreamAsAttribute
 	private String mailno;
 
+	/**
+	 * 路由节点
+	 */
+	@XStreamAlias("Route")
+	@XStreamImplicit
 	private List<Route> routeList;
 
 	public String getOrderid() {
@@ -51,9 +58,8 @@ public class RouteResponseContent {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("mailno", this.mailno).append("orderid", this.orderid)
-				.append("routeList", this.routeList).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("mailno", this.mailno)
+				.append("orderid", this.orderid).append("routeList", this.routeList).toString();
 	}
 
 }
