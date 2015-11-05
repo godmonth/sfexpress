@@ -34,6 +34,12 @@ public class Address {
 	@XStreamAsAttribute
 	private String address;
 
+	/**
+	 * 区域代码
+	 */
+	@XStreamAsAttribute
+	private String code;
+
 	public String getProvince() {
 		return province;
 	}
@@ -66,14 +72,21 @@ public class Address {
 		this.address = address;
 	}
 
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("address", this.address)
-				.append("province", this.province).append("city", this.city)
-				.append("district", this.district).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("district", this.district)
+				.append("province", this.province).append("address", this.address).append("code", this.code)
+				.append("city", this.city).toString();
 	}
 
 }
