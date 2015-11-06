@@ -10,6 +10,7 @@ import com.godmonth.sfexpress.bsp.protocol.order.AddedService;
 import com.godmonth.sfexpress.bsp.protocol.order.Cargo;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * 下订单（含筛选）
@@ -234,12 +235,14 @@ public class OrderReserveRequestContent {
 	 * 货物
 	 */
 	@XStreamAlias("Cargo")
+	@XStreamImplicit
 	private List<Cargo> cargo;
 
 	/**
-	 * 货物
+	 * 增值服务
 	 */
 	@XStreamAlias("AddedService")
+	@XStreamImplicit
 	private List<AddedService> addedService;
 
 	public String getOrderid() {

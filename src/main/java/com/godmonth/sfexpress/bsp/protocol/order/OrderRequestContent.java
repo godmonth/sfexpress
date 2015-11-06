@@ -21,13 +21,6 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 public class OrderRequestContent {
 
 	/**
-	 * 货物
-	 */
-	@XStreamAlias("Cargo")
-	@XStreamImplicit
-	private List<Cargo> cargo;
-
-	/**
 	 * 客户订单号
 	 */
 	@XStreamAsAttribute
@@ -430,9 +423,16 @@ public class OrderRequestContent {
 	@XStreamAlias("oneself_pickup_flg")
 	@XStreamAsAttribute
 	private Integer oneselfPickupFlg;
-
+	
 	/**
 	 * 货物
+	 */
+	@XStreamAlias("Cargo")
+	@XStreamImplicit
+	private List<Cargo> cargo;
+
+	/**
+	 * 增值服务
 	 */
 	@XStreamAlias("AddedService")
 	@XStreamImplicit
