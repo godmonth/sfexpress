@@ -1,7 +1,9 @@
 package com.godmonth.sfexpress.bsp;
 
+import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -22,10 +24,11 @@ public class RouteTest extends SfExpressClientTest {
 		System.out.println(routeResponse);
 	}
 
-	private RouteRequest createRouteRequest() {
+	private RouteRequest createRouteRequest() throws IOException {
+		String orderid = FileUtils.readFileToString(new File("target/orderid.txt"));
 		RouteRequestContent route = new RouteRequestContent();
 		route.setTrackingType(TrackingType.ORDERID);
-		route.setTrackingNumber("201508211846");
+		route.setTrackingNumber(orderid);
 		route.setMethodType(1);
 		return new RouteRequest(new RouteRequestBody(route));
 	}
