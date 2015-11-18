@@ -21,7 +21,7 @@ public class OrderSearchTest extends SfExpressClientTest {
 
 	private OrderSearchRequest createRequest() throws IOException {
 		String orderid = FileUtils.readFileToString(new File("target/orderid.txt"));
-		// orderid = "LO-2015110300000531";
+		 orderid = "9b3aaad9-977e-401b-aa14-9";
 		OrderSearch order = new OrderSearch(orderid);
 		OrderSearchRequest request = new OrderSearchRequest(new OrderSearchBody(order));
 		return request;

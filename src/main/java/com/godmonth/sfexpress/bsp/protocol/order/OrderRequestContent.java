@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import com.godmonth.sfexpress.bsp.protocol.constants.PayMethod;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
@@ -200,7 +201,9 @@ public class OrderRequestContent {
 	private String custid;
 
 	/**
-	 * 付款方式:1:寄方付,2:收方付,3:第三方付
+	 * 付款方式
+	 * 
+	 * @see PayMethod
 	 */
 	@XStreamAlias("pay_method")
 	@XStreamAsAttribute
@@ -423,7 +426,7 @@ public class OrderRequestContent {
 	@XStreamAlias("oneself_pickup_flg")
 	@XStreamAsAttribute
 	private Integer oneselfPickupFlg;
-	
+
 	/**
 	 * 货物
 	 */

@@ -26,6 +26,7 @@ public class RouteTest extends SfExpressClientTest {
 
 	private RouteRequest createRouteRequest() throws IOException {
 		String orderid = FileUtils.readFileToString(new File("target/orderid.txt"));
+		orderid = "51781bdc-731a-45c1-aae6-2458b935b094";
 		RouteRequestContent route = new RouteRequestContent();
 		route.setTrackingType(TrackingType.ORDERID);
 		route.setTrackingNumber(orderid);

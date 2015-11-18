@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+import com.godmonth.sfexpress.bsp.protocol.constants.PayMethod;
 import com.godmonth.sfexpress.bsp.protocol.order.AddedService;
 import com.godmonth.sfexpress.bsp.protocol.order.Cargo;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
@@ -139,7 +140,9 @@ public class OrderReserveRequestContent {
 	private String shopName;
 
 	/**
-	 * 付款方式:1:寄方付,2:收方付,3:第三方付
+	 * 付款方式
+	 * 
+	 * @see PayMethod
 	 */
 	@XStreamAlias("pay_method")
 	@XStreamAsAttribute
@@ -150,6 +153,13 @@ public class OrderReserveRequestContent {
 	 */
 	@XStreamAsAttribute
 	private String custid;
+
+	/**
+	 * 包裹数
+	 */
+	@XStreamAlias("parcel_quantity")
+	@XStreamAsAttribute
+	private Integer parcelQuantity;
 
 	/**
 	 * 寄件方所在省份
@@ -509,22 +519,31 @@ public class OrderReserveRequestContent {
 		this.addedService = addedService;
 	}
 
+	public Integer getParcelQuantity() {
+		return parcelQuantity;
+	}
+
+	public void setParcelQuantity(Integer parcelQuantity) {
+		this.parcelQuantity = parcelQuantity;
+	}
+
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("jContact", this.jContact)
-				.append("dAddress", this.dAddress).append("custid", this.custid).append("jCity", this.jCity)
-				.append("jAddress", this.jAddress).append("jMobile", this.jMobile).append("dCounty", this.dCounty)
-				.append("jCompany", this.jCompany).append("shopName", this.shopName)
-				.append("jShippercode", this.jShippercode).append("origOrderid", this.origOrderid)
-				.append("expressType", this.expressType).append("dContact", this.dContact).append("remark", this.remark)
-				.append("dCity", this.dCity).append("dCompany", this.dCompany)
-				.append("sendstarttime", this.sendstarttime).append("jPostalCode", this.jPostalCode)
-				.append("payMethod", this.payMethod).append("dTel", this.dTel).append("dMobile", this.dMobile)
-				.append("template", this.template).append("jTel", this.jTel).append("dDeliverycode", this.dDeliverycode)
-				.append("orderid", this.orderid).append("jProvince", this.jProvince).append("dProvince", this.dProvince)
-				.append("jCounty", this.jCounty).append("mailno", this.mailno).append("dPostalCode", this.dPostalCode)
+				.append("dAddress", this.dAddress).append("parcelQuantity", this.parcelQuantity)
+				.append("custid", this.custid).append("jCity", this.jCity).append("jAddress", this.jAddress)
+				.append("jMobile", this.jMobile).append("dCounty", this.dCounty).append("jCompany", this.jCompany)
+				.append("shopName", this.shopName).append("jShippercode", this.jShippercode)
+				.append("origOrderid", this.origOrderid).append("expressType", this.expressType)
+				.append("dContact", this.dContact).append("remark", this.remark).append("dCity", this.dCity)
+				.append("dCompany", this.dCompany).append("sendstarttime", this.sendstarttime)
+				.append("jPostalCode", this.jPostalCode).append("payMethod", this.payMethod).append("dTel", this.dTel)
+				.append("dMobile", this.dMobile).append("template", this.template).append("jTel", this.jTel)
+				.append("dDeliverycode", this.dDeliverycode).append("orderid", this.orderid)
+				.append("jProvince", this.jProvince).append("dProvince", this.dProvince).append("jCounty", this.jCounty)
+				.append("mailno", this.mailno).append("dPostalCode", this.dPostalCode)
 				.append("addedService", this.addedService).append("origMailno", this.origMailno)
 				.append("cargo", this.cargo).toString();
 	}
