@@ -43,7 +43,7 @@ public class RoutePushTest extends SfExpressClientTest {
 		waybillRoute.setOrderid("ooo123");
 		waybillRoute.setAcceptTime(new Date());
 		waybillRoute.setRemark("收件");
-		waybillRoute.setOpcode("50");
+		waybillRoute.setOpCode("50");
 		return waybillRoute;
 	}
 }

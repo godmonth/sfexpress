@@ -51,7 +51,7 @@ public class WaybillRoute {
 	 * 路由节点操作码
 	 */
 	@XStreamAsAttribute
-	private String opcode;
+	private String opCode;
 
 	public Long getId() {
 		return id;
@@ -101,25 +101,22 @@ public class WaybillRoute {
 		this.remark = remark;
 	}
 
-	public String getOpcode() {
-		return opcode;
+	public String getOpCode() {
+		return opCode;
 	}
 
-	public void setOpcode(String opcode) {
-		this.opcode = opcode;
+	public void setOpCode(String opCode) {
+		this.opCode = opCode;
 	}
 
 	/**
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
-				.append("mailno", this.mailno)
-				.append("acceptAddress", this.acceptAddress)
-				.append("orderid", this.orderid)
-				.append("acceptTime", this.acceptTime)
-				.append("remark", this.remark).append("id", this.id)
-				.append("opcode", this.opcode).toString();
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("mailno", this.mailno)
+				.append("acceptTime", this.acceptTime).append("remark", this.remark).append("orderid", this.orderid)
+				.append("id", this.id).append("acceptAddress", this.acceptAddress).append("opCode", this.opCode)
+				.toString();
 	}
 
 }
