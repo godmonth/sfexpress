@@ -11,6 +11,13 @@ public class RouteResponseBody {
 	@XStreamAlias("RouteResponse")
 	private RouteResponseContent routeResponse;
 
+	public RouteResponseBody() {
+	}
+
+	public RouteResponseBody(RouteResponseContent routeResponse) {
+		this.routeResponse = routeResponse;
+	}
+
 	public RouteResponseContent getRouteResponse() {
 		return routeResponse;
 	}
