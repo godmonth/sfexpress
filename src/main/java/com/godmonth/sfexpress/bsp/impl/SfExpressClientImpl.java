@@ -43,13 +43,14 @@ public class SfExpressClientImpl implements SfExpressClient {
 	public <REQ extends Request, RES extends Response> RES post(REQ request, Class<RES> responseClass) {
 		request.setHead(head);
 		String requestXml = xStream.toXML(request);
-		logger.trace("requestXml:{}", requestXml);
+		String verifyCode = md5hex(requestXml, secretKey);
+		logger.trace("verifyCode:{},requestXml:{}", verifyCode, requestXml);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_FORM_URLENCODED));
 		headers.setAcceptCharset(Arrays.asList(StandardCharsets.UTF_8));
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("xml", requestXml);
-		params.add("verifyCode", md5hex(requestXml, secretKey));
+		params.add("verifyCode", verifyCode);
 		String response = restTemplate.postForObject(url, params, String.class);
 		logger.trace("responseXml:{}", response);
 
